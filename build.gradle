@@ -1,3 +1,12 @@
+buildscript {
+    final netflix_grpc_plugins_version = System.properties['netflix.grpc-plugins_netflix-grpc-plugins.version']
+    dependencies {
+        classpath "netflix.grpc-plugins:netflix-grpc-plugin-client:${netflix_grpc_plugins_version}"
+        classpath "netflix.grpc-plugins:netflix-grpc-plugin-proto-definition:${netflix_grpc_plugins_version}"
+        classpath "netflix.grpc-plugins:netflix-grpc-plugin-server-guice:${netflix_grpc_plugins_version}"
+    }
+}
+
 plugins {
     id 'com.github.sherter.google-java-format' version '0.9' apply false
     id 'net.ltgt.errorprone' version '2.0.1' apply false

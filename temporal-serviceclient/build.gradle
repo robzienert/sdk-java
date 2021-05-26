@@ -1,5 +1,8 @@
-plugins {
-    id 'com.google.protobuf' version '0.8.16'
+apply plugin: 'com.netflix.grpc.proto-definition'
+
+license {
+    exclude "**/v1/*.java"
+    exclude "gogoproto/*.java"
 }
 
 apply plugin: 'idea' // IntelliJ plugin to see files generated from protos
@@ -34,47 +37,14 @@ task updateSubmodules(type: Exec) {
     commandLine 'git', 'submodule', 'update'
 }
 
+tasks.checkProto.dependsOn('updateSubmodules')
+
 //TODO(maxim): For some reason the following doesn't exclude proto files from the lib jar.
 // But it should according to https://github.com/google/protobuf-gradle-plugin/issues/390
 jar {
     exclude '**.proto'
     includeEmptyDirs false
 }
-
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.17.0'
-    }
-    plugins {
-        grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.37.1'
-        }
-    }
-    generateProtoTasks {
-        all().each { task -> task.dependsOn updateSubmodules }
-        all()*.plugins {
-            grpc {
-                outputSubDir = 'java'
-            }
-        }
-    }
-}
-
-clean {
-    delete protobuf.generatedFilesBaseDir
-}
-
-protobuf {
-    generatedFilesBaseDir = "$buildDir/generated"
-}
-
-idea {
-    module {
-        sourceDirs += file("$buildDir/generated/main/java")
-        sourceDirs += file("$buildDir/generated/main/grpc")
-    }
-}
-
 
 // Generation version.properties for value to be included into the request header
 task createProperties(dependsOn: processResources) {
@@ -96,7 +66,7 @@ classes {
 }
 
 // Needed to include generated files into the source jar
-tasks.sourcesJar.from(file("$buildDir/generated/main/java"))
+//tasks.sourcesJar.from(file("$buildDir/generated/main/java"))
 
 task registerNamespace(type: JavaExec) {
     main = 'io.temporal.serviceclient.RegisterTestNamespace'
