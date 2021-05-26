@@ -1,4 +1,20 @@
-# Temporal Java SDK  [![Build status](https://badge.buildkite.com/182afcb377dc16cf9d41b263620446719de2d96d6cd9d43882.svg?branch=master)](https://buildkite.com/temporal/sdk-java)
+# NOTE
+
+This is a fork of the temporal java SDK solely to align library versions with the platform recommendations (particularly around gRPC versions).
+
+Don't patch bugs here, submit them upstream and pull the code changes into here.
+
+# Publishing Artifacts
+Use [tag-to-release](http://go/tag-to-release) to publish your client libraries.
+
+Actions which will publish artifacts:
+
+- Push to Master ⇒ Publish snapshot
+- Push to other branch ⇒ Publish snapshot
+- Push a tag like `v2.0.0-rc.1` ⇒ Publish candidate
+- Push a tag like `v2.0.0` ⇒ Publish release
+
+# Temporal Java SDK
 
 [Temporal](https://github.com/temporalio/temporal) is a Workflow as Code platform used to build and operate
 resilient applications using developer friendly primitives, instead of constantly fighting your infrastructure.
