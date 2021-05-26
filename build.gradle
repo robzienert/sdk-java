@@ -9,6 +9,7 @@ plugins {
 
 allprojects {
     apply plugin: 'netflix.nebula'
+    apply plugin: 'nebula.release'
 }
 
 
@@ -20,4 +21,14 @@ apply from: "$rootDir/gradle/licensing.gradle"
 
 ext.getClientVersionName = { ->
     return project.findProperty("temporalClientVersion")
+}
+
+subprojects {
+    dependencyRecommendations {
+        mavenBom module: "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations:latest.release"
+        map recommendations: [
+            "io.opentracing:opentracing-mock": getRecommendedVersion("io.opentracing", "opentracing-api"),
+            "io.opentracing:opentracing-util": getRecommendedVersion("io.opentracing", "opentracing-api"),
+        ]
+    }
 }
