@@ -10,11 +10,13 @@ apply plugin: 'idea' // IntelliJ plugin to see files generated from protos
 description = '''Temporal Workflow Java SDK'''
 
 dependencies {
-    api 'io.grpc:grpc-protobuf:1.37.1'
-    api 'io.grpc:grpc-stub:1.37.1'
-    api 'io.grpc:grpc-core:1.37.1'
-    api 'io.grpc:grpc-netty-shaded:1.37.1'
-    api group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.17.0'
+    api 'netflix.com.google.protobuf:protobuf-java-nflx'
+    api 'netflix.io.grpc:grpc-protobuf-nflx'
+    api 'netflix.io.grpc:grpc-stub-nflx'
+    api 'netflix.io.grpc:grpc-core-nflx'
+    api 'netflix.io.grpc:grpc-netty-shaded-nflx'
+    api 'netflix.grpc:netflix-grpc-options-proto-definition'
+    api 'netflix.com.google.protobuf:protobuf-java-util-nflx'
     api group: 'com.uber.m3', name: 'tally-core', version: '0.6.1'
     api group: 'org.slf4j', name: 'slf4j-api'
     if (!JavaVersion.current().isJava8()) {

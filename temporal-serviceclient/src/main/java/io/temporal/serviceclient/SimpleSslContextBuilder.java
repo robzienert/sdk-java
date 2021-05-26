@@ -25,12 +25,17 @@ import io.grpc.netty.shaded.io.netty.handler.ssl.SslContext;
 import io.grpc.netty.shaded.io.netty.handler.ssl.SslContextBuilder;
 import io.grpc.netty.shaded.io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import java.io.InputStream;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.Provider;
+import java.util.Objects;
+import javax.net.ssl.ManagerFactoryParameters;
 import javax.net.ssl.SSLException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.TrustManagerFactorySpi;
 import javax.net.ssl.X509TrustManager;
 
 public class SimpleSslContextBuilder {
@@ -76,19 +81,61 @@ public class SimpleSslContextBuilder {
    * @throws SSLException - when it was unable to build the context.
    */
   public SslContext build() throws SSLException {
+
     if (trustManager != null && useInsecureTrustManager)
       throw new IllegalArgumentException(
           "Can not use insecure trust manager if custom trust manager is set.");
     return SslContextBuilder.forClient()
         .trustManager(
             trustManager != null
-                ? trustManager
+                ? new DelegatingTrustManagerFactory(trustManager)
                 : useInsecureTrustManager
-                    ? InsecureTrustManagerFactory.INSTANCE.getTrustManagers()[0]
-                    : getDefaultTrustManager())
+                    ? InsecureTrustManagerFactory.INSTANCE
+                    : getDefaultTrustManagerFactory())
         .keyManager(keyCertChain, key, keyPassword)
         .applicationProtocolConfig(DEFAULT_APPLICATION_PROTOCOL_CONFIG)
         .build();
+  }
+
+  private static class DelegatingTrustManagerFactory extends TrustManagerFactory {
+    private static class DelegatingTrustManagerFactorySpi extends TrustManagerFactorySpi {
+      private final TrustManager trustManager;
+
+      public DelegatingTrustManagerFactorySpi(TrustManager trustManager) {
+        this.trustManager = Objects.requireNonNull(trustManager);
+      }
+
+      @Override
+      protected void engineInit(KeyStore ks) throws KeyStoreException {
+        throw new UnsupportedOperationException(
+            "unsupported - this trust manager is already initialized");
+      }
+
+      @Override
+      protected void engineInit(ManagerFactoryParameters spec)
+          throws InvalidAlgorithmParameterException {
+        throw new UnsupportedOperationException(
+            "unsupported - this trust manager is already initialized");
+      }
+
+      @Override
+      protected TrustManager[] engineGetTrustManagers() {
+        return new TrustManager[] {trustManager};
+      }
+    }
+
+    private static class DelegatingTrustManagerFactoryProvider extends Provider {
+      public DelegatingTrustManagerFactoryProvider() {
+        super("delegating", 1.0d, "do not use");
+      }
+    }
+
+    public DelegatingTrustManagerFactory(TrustManager trustManager) {
+      super(
+          new DelegatingTrustManagerFactorySpi(trustManager),
+          new DelegatingTrustManagerFactoryProvider(),
+          TrustManagerFactory.getDefaultAlgorithm());
+    }
   }
 
   /**
@@ -121,6 +168,18 @@ public class SimpleSslContextBuilder {
     return this;
   }
 
+  private TrustManagerFactory getDefaultTrustManagerFactory() {
+    TrustManagerFactory tmf;
+    try {
+      tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+      // Using null here initialises the TMF with the default trust store.
+      tmf.init((KeyStore) null);
+      return tmf;
+    } catch (KeyStoreException | NoSuchAlgorithmException e) {
+      throw new UnknownDefaultTrustManagerException(e);
+    }
+  }
+
   /**
    * @return system default trust manager.
    * @throws UnknownDefaultTrustManagerException, which can be caused by {@link
@@ -129,14 +188,7 @@ public class SimpleSslContextBuilder {
    *     initialization failed or if no {@link X509TrustManager} has been found.
    */
   private X509TrustManager getDefaultTrustManager() {
-    TrustManagerFactory tmf;
-    try {
-      tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-      // Using null here initialises the TMF with the default trust store.
-      tmf.init((KeyStore) null);
-    } catch (KeyStoreException | NoSuchAlgorithmException e) {
-      throw new UnknownDefaultTrustManagerException(e);
-    }
+    TrustManagerFactory tmf = getDefaultTrustManagerFactory();
 
     for (TrustManager tm : tmf.getTrustManagers()) {
       if (tm instanceof X509TrustManager) {
