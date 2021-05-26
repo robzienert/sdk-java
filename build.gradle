@@ -7,6 +7,11 @@ plugins {
 //    id 'de.marcphilipp.nexus-publish' version '0.4.0' apply falsed
 }
 
+allprojects {
+    apply plugin: 'netflix.nebula'
+}
+
+
 //apply from: "$rootDir/gradle/versioning.gradle"
 apply from: "$rootDir/gradle/java.gradle"
 apply from: "$rootDir/gradle/licensing.gradle"

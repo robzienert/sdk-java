@@ -1,0 +1,12 @@
+app-type: java-library
+custom-info-responses:
+  GroupId: netflix.io.temporal
+  SlackChannel: temporal-dev
+jenkins-controller: spinnaker
+jenkins-default-job: nflx-temporal-sdk(shaded)
+jenkins-jobs:
+- nflx-temporal-sdk
+name: nflx-temporal-sdk
+org: SPKR
+tool-versions:
+  jdk: "8"

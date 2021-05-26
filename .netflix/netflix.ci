@@ -1,0 +1,17 @@
+#!/bin/bash
+set -efx
+
+GRADLE="newt exec ./gradlew --info --stacktrace clean"
+
+#if [ "$ROCKET_TAG_TYPE" = "FINAL" ]; then
+if [[ "$ROCKET_BRANCH" =~ v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+(\+([[:alnum:]]|-)+)?$ ]]; then
+    $GRADLE -Prelease.useLastTag=true final
+#elif [ "$ROCKET_TAG_TYPE" = "CANDIDATE" ]; then
+elif [[ "$ROCKET_BRANCH" =~ v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+-rc\.[[:digit:]]+(\+([[:alnum:]]|-)+)?$ ]]; then
+    $GRADLE -Prelease.useLastTag=true candidate
+elif [ "$ROCKET_BRANCH" = "master" ]; then
+    git fetch --tags
+    $GRADLE devSnapshot
+else
+    $GRADLE check
+fi

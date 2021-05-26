@@ -1,0 +1,13 @@
+scm:
+  checkout:
+    prBuildMerge: true
+jenkins:
+  label: b8
+notifications:
+  slack:
+  - channel: temporal-dev
+    conditions:
+    - failure
+    - aborted
+publish:
+  junit: "**/build/*est-results/*.xml"
