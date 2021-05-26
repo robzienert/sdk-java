@@ -3,6 +3,6 @@ description = '''Temporal Workflow Java SDK testing, JUnit 4.x integration'''
 dependencies {
     api project(':temporal-testing')
 
-    api group: 'junit', name: 'junit', version: '4.13.2'
+    api group: 'junit', name: 'junit'
 }
 
