@@ -494,7 +494,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.51"
+            "locked": "2.3.54"
         }
     },
     "runtimeClasspath": {
