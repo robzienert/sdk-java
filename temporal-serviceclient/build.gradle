@@ -15,6 +15,7 @@ dependencies {
     api 'netflix.io.grpc:grpc-stub-nflx'
     api 'netflix.io.grpc:grpc-core-nflx'
     api 'netflix.io.grpc:grpc-netty-shaded-nflx'
+    api 'netflix.io.grpc:grpc-services-nflx'
     api 'netflix.grpc:netflix-grpc-options-proto-definition'
     api 'netflix.com.google.protobuf:protobuf-java-util-nflx'
     api group: 'com.uber.m3', name: 'tally-core', version: '0.6.1'

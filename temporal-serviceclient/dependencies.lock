@@ -211,7 +211,8 @@
         "netflix.com.google.protobuf:protobuf-java-util-nflx": {
             "locked": "3.11.1",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
@@ -235,7 +236,8 @@
         "netflix.io.grpc:grpc-core-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.io.grpc:grpc-netty-shaded-nflx"
+                "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.io.grpc:grpc-guava-shaded-nflx": {
@@ -258,13 +260,18 @@
         "netflix.io.grpc:grpc-protobuf-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2"
         },
         "netflix.io.grpc:grpc-stub-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "org.checkerframework:checker-qual": {
@@ -354,7 +361,8 @@
         "netflix.com.google.protobuf:protobuf-java-util-nflx": {
             "locked": "3.11.1",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
@@ -378,7 +386,8 @@
         "netflix.io.grpc:grpc-core-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.io.grpc:grpc-netty-shaded-nflx"
+                "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.io.grpc:grpc-guava-shaded-nflx": {
@@ -401,13 +410,18 @@
         "netflix.io.grpc:grpc-protobuf-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2"
         },
         "netflix.io.grpc:grpc-stub-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "org.checkerframework:checker-qual": {
@@ -669,7 +683,8 @@
         "netflix.com.google.protobuf:protobuf-java-util-nflx": {
             "locked": "3.11.1",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
@@ -693,7 +708,8 @@
         "netflix.io.grpc:grpc-core-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.io.grpc:grpc-netty-shaded-nflx"
+                "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.io.grpc:grpc-guava-shaded-nflx": {
@@ -716,13 +732,18 @@
         "netflix.io.grpc:grpc-protobuf-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2"
         },
         "netflix.io.grpc:grpc-stub-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "org.checkerframework:checker-qual": {
@@ -978,7 +999,8 @@
         "netflix.com.google.protobuf:protobuf-java-util-nflx": {
             "locked": "3.11.1",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
@@ -1002,7 +1024,8 @@
         "netflix.io.grpc:grpc-core-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.io.grpc:grpc-netty-shaded-nflx"
+                "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.io.grpc:grpc-guava-shaded-nflx": {
@@ -1025,13 +1048,18 @@
         "netflix.io.grpc:grpc-protobuf-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2"
         },
         "netflix.io.grpc:grpc-stub-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "org.checkerframework:checker-qual": {
@@ -1163,7 +1191,8 @@
         "netflix.com.google.protobuf:protobuf-java-util-nflx": {
             "locked": "3.11.1",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
@@ -1187,7 +1216,8 @@
         "netflix.io.grpc:grpc-core-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.io.grpc:grpc-netty-shaded-nflx"
+                "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.io.grpc:grpc-guava-shaded-nflx": {
@@ -1210,13 +1240,18 @@
         "netflix.io.grpc:grpc-protobuf-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2"
         },
         "netflix.io.grpc:grpc-stub-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "org.checkerframework:checker-qual": {
@@ -1348,7 +1383,8 @@
         "netflix.com.google.protobuf:protobuf-java-util-nflx": {
             "locked": "3.11.1",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
@@ -1372,7 +1408,8 @@
         "netflix.io.grpc:grpc-core-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.io.grpc:grpc-netty-shaded-nflx"
+                "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "netflix.io.grpc:grpc-guava-shaded-nflx": {
@@ -1395,13 +1432,18 @@
         "netflix.io.grpc:grpc-protobuf-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2"
         },
         "netflix.io.grpc:grpc-stub-nflx": {
             "locked": "1.26.2",
             "transitive": [
-                "netflix.grpc:netflix-grpc-options-proto-definition"
+                "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx"
             ]
         },
         "org.checkerframework:checker-qual": {
