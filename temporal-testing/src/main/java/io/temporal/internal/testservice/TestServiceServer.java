@@ -19,6 +19,7 @@
 
 package io.temporal.internal.testservice;
 
+// TODO requires io.grpc 1.34.0+ https://github.com/temporalio/sdk-java/pull/470
 // public class TestServiceServer {
 //
 //  public static void main(String[] args) {

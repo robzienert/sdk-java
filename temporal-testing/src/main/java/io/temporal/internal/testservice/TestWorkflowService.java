@@ -187,6 +187,7 @@ public final class TestWorkflowService extends WorkflowServiceGrpc.WorkflowServi
     this(0);
   }
 
+  // TODO requires io.grpc 1.34.0+ https://github.com/temporalio/sdk-java/pull/470
   // Creates an out-of-process rather than in-process server, and does not set up a client.
   // Useful, for example, if you want to use the test service from other SDKs.
   //  public static TestWorkflowService createServerOnly(int port) {
