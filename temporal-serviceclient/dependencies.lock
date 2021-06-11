@@ -196,9 +196,6 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
-        "javax.annotation:javax.annotation-api": {
-            "locked": "1.3.2"
-        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.11.1",
             "transitive": [
@@ -345,9 +342,6 @@
             "transitive": [
                 "netflix.io.grpc:grpc-core-nflx"
             ]
-        },
-        "javax.annotation:javax.annotation-api": {
-            "locked": "1.3.2"
         },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.11.1",
@@ -668,9 +662,6 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
-        "javax.annotation:javax.annotation-api": {
-            "locked": "1.3.2"
-        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.11.1",
             "transitive": [
@@ -969,9 +960,6 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
-        "javax.annotation:javax.annotation-api": {
-            "locked": "1.3.2"
-        },
         "junit:junit": {
             "locked": "4.13.2"
         },
@@ -1161,9 +1149,6 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
-        "javax.annotation:javax.annotation-api": {
-            "locked": "1.3.2"
-        },
         "junit:junit": {
             "locked": "4.13.2"
         },
@@ -1352,9 +1337,6 @@
             "transitive": [
                 "netflix.io.grpc:grpc-core-nflx"
             ]
-        },
-        "javax.annotation:javax.annotation-api": {
-            "locked": "1.3.2"
         },
         "junit:junit": {
             "locked": "4.13.2"
