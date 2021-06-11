@@ -24,8 +24,6 @@ import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.Timestamps;
 import io.grpc.Context;
 import io.grpc.Deadline;
-import io.grpc.Grpc;
-import io.grpc.InsecureServerCredentials;
 import io.grpc.ManagedChannel;
 import io.grpc.Server;
 import io.grpc.Status;
@@ -191,28 +189,28 @@ public final class TestWorkflowService extends WorkflowServiceGrpc.WorkflowServi
 
   // Creates an out-of-process rather than in-process server, and does not set up a client.
   // Useful, for example, if you want to use the test service from other SDKs.
-  public static TestWorkflowService createServerOnly(int port) {
-    log.info("Server started, listening on " + port);
-    return new TestWorkflowService(true, port);
-  }
+  //  public static TestWorkflowService createServerOnly(int port) {
+  //    log.info("Server started, listening on " + port);
+  //    return new TestWorkflowService(true, port);
+  //  }
 
-  private TestWorkflowService(boolean isOutOfProc, int port) {
-    if (!isOutOfProc) {
-      // isOutOfProc is just here to make unambiguous constructor overloading.
-      throw new RuntimeException("Impossible.");
-    }
-    client = null;
-    store = new TestWorkflowStoreImpl(0 /* 0 means use current time */);
-    try {
-      outOfProcessServer =
-          Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
-              .addService(this)
-              .build()
-              .start();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-  }
+  //  private TestWorkflowService(boolean isOutOfProc, int port) {
+  //    if (!isOutOfProc) {
+  //      // isOutOfProc is just here to make unambiguous constructor overloading.
+  //      throw new RuntimeException("Impossible.");
+  //    }
+  //    client = null;
+  //    store = new TestWorkflowStoreImpl(0 /* 0 means use current time */);
+  //    try {
+  //      outOfProcessServer =
+  //          Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
+  //              .addService(this)
+  //              .build()
+  //              .start();
+  //    } catch (IOException e) {
+  //      throw new RuntimeException(e);
+  //    }
+  //  }
 
   @Override
   public void close() {

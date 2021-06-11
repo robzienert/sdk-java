@@ -1,6 +1,6 @@
-plugins {
-    id 'application'
-}
+//plugins {
+//    id 'application'
+//}
 
 description = '''Temporal Workflow Java SDK testing'''
 
@@ -15,16 +15,16 @@ dependencies {
     testRuntimeOnly group: 'org.slf4j', name: 'slf4j-simple'
 }
 
-task testServiceServer(type: CreateStartScripts) {
-    mainClassName = 'io.temporal.internal.testservice.TestServiceServer'
-    applicationName = 'test-service-server'
-    outputDir = new File(project.buildDir, 'tmp')
-    classpath = startScripts.classpath
-    dependsOn 'sourcesJar'
-}
-
-// Run: ./gradlew installDist :temporal-testing:testServiceServer
-applicationDistribution.into('bin') {
-    from(testServiceServer)
-    fileMode = 0755
-}
+//task testServiceServer(type: CreateStartScripts) {
+//    mainClassName = 'io.temporal.internal.testservice.TestServiceServer'
+//    applicationName = 'test-service-server'
+//    outputDir = new File(project.buildDir, 'tmp')
+//    classpath = startScripts.classpath
+//    dependsOn 'sourcesJar'
+//}
+//
+//// Run: ./gradlew installDist :temporal-testing:testServiceServer
+//applicationDistribution.into('bin') {
+//    from(testServiceServer)
+//    fileMode = 0755
+//}
