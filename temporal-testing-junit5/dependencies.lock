@@ -217,6 +217,7 @@
             "locked": "3.11.1",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -245,6 +246,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -272,6 +274,13 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2",
+            "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -279,6 +288,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -601,6 +611,13 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2",
+            "transitive": [
+                "netflix.io.temporal:temporal-sdk",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.11.1",
             "transitive": [
@@ -615,6 +632,7 @@
             "locked": "3.11.1",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -643,6 +661,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -670,6 +689,13 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2",
+            "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -677,6 +703,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -983,6 +1010,7 @@
             "locked": "3.11.1",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1011,6 +1039,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1038,6 +1067,13 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2",
+            "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1045,6 +1081,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1239,6 +1276,13 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2",
+            "transitive": [
+                "netflix.io.temporal:temporal-sdk",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.11.1",
             "transitive": [
@@ -1253,6 +1297,7 @@
             "locked": "3.11.1",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1281,6 +1326,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.io.grpc:grpc-netty-shaded-nflx",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1308,6 +1354,13 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
+        "netflix.io.grpc:grpc-services-nflx": {
+            "locked": "1.26.2",
+            "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },
@@ -1315,6 +1368,7 @@
             "locked": "1.26.2",
             "transitive": [
                 "netflix.grpc:netflix-grpc-options-proto-definition",
+                "netflix.io.grpc:grpc-services-nflx",
                 "netflix.io.temporal:temporal-serviceclient"
             ]
         },

@@ -22,9 +22,9 @@ package io.temporal.internal.worker;
 import com.uber.m3.tally.Scope;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
-import io.temporal.internal.common.BackoffThrottler;
 import io.temporal.internal.common.InternalUtils;
 import io.temporal.internal.metrics.MetricsType;
+import io.temporal.serviceclient.BackoffThrottler;
 import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.CountDownLatch;
@@ -74,6 +74,10 @@ public final class Poller<T> implements SuspendableWorker {
           StatusRuntimeException te = (StatusRuntimeException) e;
           if (te.getStatus().getCode() == Status.Code.DEADLINE_EXCEEDED) {
             log.warn("Failure in thread " + t.getName(), e);
+            return;
+          }
+          if (te.getCause() instanceof InterruptedException) {
+            log.debug("Failure in thread " + t.getName(), e);
             return;
           }
         }

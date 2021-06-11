@@ -17,15 +17,17 @@
  *  permissions and limitations under the License.
  */
 
-package io.temporal.workflow.shared;
+package io.temporal.internal.testservice;
 
-import io.temporal.workflow.Workflow;
-
-public class TestChild implements TestWorkflows.ITestChild {
-
-  @Override
-  public String execute(String arg, int delay) {
-    Workflow.sleep(delay);
-    return arg.toUpperCase();
-  }
-}
+// TODO requires io.grpc 1.34.0+ https://github.com/temporalio/sdk-java/pull/470
+// public class TestServiceServer {
+//
+//  public static void main(String[] args) {
+//    if (args.length != 1) {
+//      System.err.println("Usage: <command> <port>");
+//    }
+//    Integer port = Integer.parseInt(args[0]);
+//
+//    TestWorkflowService.createServerOnly(port);
+//  }
+// }

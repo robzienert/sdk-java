@@ -121,5 +121,17 @@ remote:
 This is going to leave a bit of a trail of merge commits in our history but I think it is the most obvious way of
 keeping track of when exactly we synced changes across..
 
+## Upgrade notes
 
+In v1.0.8 new gRPC dependencies were added that are included in io.grpc v1.34.0+ which is a version
+ahead of the latest Netflix supported version.  Fortunately, these dependencies were added for a new 
+testing feature that is optional and also not fully baked, see 
+https://github.com/temporalio/sdk-java/pull/470 for more details.
 
+Where necessary, we have commented out that code and included a note with the above PR in it.  When
+we are able to upgrade to Netflix grpc 1.34.0+ we can resolve this issue.  To find the code, search
+for this comment:
+
+```
+// TODO requires io.grpc 1.34.0+ https://github.com/temporalio/sdk-java/pull/470
+```
