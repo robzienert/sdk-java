@@ -129,4 +129,9 @@ testing feature that is optional and also not fully baked, see
 https://github.com/temporalio/sdk-java/pull/470 for more details.
 
 Where necessary, we have commented out that code and included a note with the above PR in it.  When
-we are able to upgrade to Netflix grpc 1.34.0+ we can resolve this issue.
+we are able to upgrade to Netflix grpc 1.34.0+ we can resolve this issue.  To find the code, search
+for this comment:
+
+```
+// TODO requires io.grpc 1.34.0+ https://github.com/temporalio/sdk-java/pull/470
+```
