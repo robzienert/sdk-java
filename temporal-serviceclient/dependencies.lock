@@ -259,7 +259,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30"
+            "locked": "1.7.31"
         }
     },
     "compileProtoPath": {
@@ -410,7 +410,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30"
+            "locked": "1.7.31"
         }
     },
     "errorprone": {
@@ -562,7 +562,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.56"
+            "locked": "2.3.57"
         }
     },
     "protobufToolsLocator_grpc_java": {
@@ -572,7 +572,7 @@
     },
     "protobufToolsLocator_netflix_grpc_wrapper_type": {
         "netflix.grpc-plugins:netflix-grpc-plugin-protoc-wrapper-type": {
-            "locked": "7.2.8"
+            "locked": "7.2.9"
         }
     },
     "protobufToolsLocator_protoc": {
@@ -733,7 +733,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30"
+            "locked": "1.7.31"
         }
     },
     "testAnnotationProcessor": {
@@ -1035,7 +1035,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "ch.qos.logback:logback-classic"
             ]
@@ -1228,7 +1228,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "ch.qos.logback:logback-classic"
             ]
@@ -1421,7 +1421,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "ch.qos.logback:logback-classic"
             ]
