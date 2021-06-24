@@ -323,7 +323,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -478,7 +478,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.56"
+            "locked": "2.3.57"
         }
     },
     "runtimeClasspath": {
@@ -747,7 +747,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "com.cronutils:cron-utils",
                 "netflix.io.temporal:temporal-serviceclient"
@@ -1101,7 +1101,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "ch.qos.logback:logback-classic",
                 "netflix.io.temporal:temporal-serviceclient"
@@ -1414,7 +1414,7 @@
             ]
         },
         "org.slf4j:slf4j-api": {
-            "locked": "1.7.30",
+            "locked": "1.7.31",
             "transitive": [
                 "ch.qos.logback:logback-classic",
                 "com.cronutils:cron-utils",
