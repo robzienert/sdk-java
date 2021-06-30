@@ -412,6 +412,7 @@ public final class WorkflowStateMachines {
       case EVENT_TYPE_WORKFLOW_EXECUTION_CANCEL_REQUESTED:
         callbacks.cancel(event);
         break;
+      case EVENT_TYPE_WORKFLOW_EXECUTION_TIMED_OUT:
       case UNRECOGNIZED:
         break;
       default:
@@ -514,6 +515,7 @@ public final class WorkflowStateMachines {
             RequestCancelExternalWorkflowExecutionCommandAttributes.newBuilder()
                 .setWorkflowId(attributes.getWorkflowId())
                 .setNamespace(attributes.getNamespace())
+                .setChildWorkflowOnly(true)
                 .build(),
             (r, e) -> { // TODO(maxim): Decide what to do if an error is passed to the callback.
               if (cancellationType == ChildWorkflowCancellationType.WAIT_CANCELLATION_REQUESTED) {
@@ -549,7 +551,7 @@ public final class WorkflowStateMachines {
   }
 
   /**
-   * @param attributes attributes to use to cancel external worklfow
+   * @param attributes attributes to use to cancel external workflow
    * @param completionCallback one of ExternalWorkflowExecutionCancelRequestedEvent,
    */
   public void requestCancelExternalWorkflowExecution(
