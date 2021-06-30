@@ -230,7 +230,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -476,7 +476,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.57"
+            "locked": "2.3.58"
         }
     },
     "runtimeClasspath": {
@@ -590,7 +590,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -966,7 +966,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -1249,7 +1249,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
