@@ -181,6 +181,9 @@
         "com.uber.m3:tally-core": {
             "locked": "0.6.1"
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.12.0",
             "transitive": [
@@ -196,7 +199,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1"
+            "locked": "1.33.2"
         },
         "netflix.io.grpc:grpc-api-nflx": {
             "locked": "1.33.1",
@@ -320,6 +323,9 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.12.0",
             "transitive": [
@@ -336,7 +342,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1"
+            "locked": "1.33.2"
         },
         "netflix.io.grpc:grpc-api-nflx": {
             "locked": "1.33.1",
@@ -562,7 +568,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.57"
+            "locked": "2.3.58"
         }
     },
     "protobufToolsLocator_grpc_java": {
@@ -572,7 +578,7 @@
     },
     "protobufToolsLocator_netflix_grpc_wrapper_type": {
         "netflix.grpc-plugins:netflix-grpc-plugin-protoc-wrapper-type": {
-            "locked": "7.2.9"
+            "locked": "7.2.10"
         }
     },
     "protobufToolsLocator_protoc": {
@@ -643,6 +649,9 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.12.0",
             "transitive": [
@@ -659,7 +668,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1"
+            "locked": "1.33.2"
         },
         "netflix.io.grpc:grpc-api-nflx": {
             "locked": "1.33.1",
@@ -927,6 +936,9 @@
         "com.uber.m3:tally-core": {
             "locked": "0.6.1"
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "junit:junit": {
             "locked": "4.13.2"
         },
@@ -957,7 +969,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1"
+            "locked": "1.33.2"
         },
         "netflix.io.grpc:grpc-api-nflx": {
             "locked": "1.33.1",
@@ -1108,6 +1120,9 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "junit:junit": {
             "locked": "4.13.2"
         },
@@ -1139,7 +1154,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1"
+            "locked": "1.33.2"
         },
         "netflix.io.grpc:grpc-api-nflx": {
             "locked": "1.33.1",
@@ -1301,6 +1316,9 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "junit:junit": {
             "locked": "4.13.2"
         },
@@ -1332,7 +1350,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1"
+            "locked": "1.33.2"
         },
         "netflix.io.grpc:grpc-api-nflx": {
             "locked": "1.33.1",

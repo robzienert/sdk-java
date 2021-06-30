@@ -213,6 +213,9 @@
         "io.micrometer:micrometer-core": {
             "locked": "1.6.1"
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.12.0",
             "transitive": [
@@ -230,7 +233,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -476,7 +479,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.57"
+            "locked": "2.3.58"
         }
     },
     "runtimeClasspath": {
@@ -572,6 +575,12 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2",
+            "transitive": [
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
         "netflix.com.google.protobuf:protobuf-java-nflx": {
             "locked": "3.12.0",
             "transitive": [
@@ -590,7 +599,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -931,6 +940,9 @@
                 "netflix.io.temporal:temporal-sdk"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2"
+        },
         "junit:junit": {
             "locked": "4.13.2",
             "transitive": [
@@ -966,7 +978,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
@@ -1213,6 +1225,13 @@
                 "netflix.io.grpc:grpc-core-nflx"
             ]
         },
+        "javax.annotation:javax.annotation-api": {
+            "locked": "1.3.2",
+            "transitive": [
+                "netflix.io.temporal:temporal-sdk",
+                "netflix.io.temporal:temporal-serviceclient"
+            ]
+        },
         "junit:junit": {
             "locked": "4.13.2",
             "transitive": [
@@ -1249,7 +1268,7 @@
             ]
         },
         "netflix.grpc:netflix-grpc-options-proto-definition": {
-            "locked": "1.33.1",
+            "locked": "1.33.2",
             "transitive": [
                 "netflix.io.temporal:temporal-serviceclient"
             ]
