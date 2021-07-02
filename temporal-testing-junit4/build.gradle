@@ -4,6 +4,7 @@ dependencies {
     api project(':temporal-testing')
 
     api group: 'junit', name: 'junit'
+
     testRuntimeOnly group: 'org.slf4j', name: 'slf4j-simple'
 }
 

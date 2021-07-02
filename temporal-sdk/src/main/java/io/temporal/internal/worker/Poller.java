@@ -28,7 +28,6 @@ import io.temporal.serviceclient.BackoffThrottler;
 import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -40,11 +39,11 @@ public final class Poller<T> implements SuspendableWorker {
 
   public interface PollTask<TT> {
     /**
-     * Pollers should shade all {@code java.lang.InterruptedException}s and raise {@code
-     * Thread.interrupted()} flag if the exceptions happen. This follows GRPC stubs approach, see
-     * {@code io.grpc.stub.ClientCalls#blockingUnaryCall}. Because pollers use GRPC subs anyway,
-     * this implementation was chosen for consistency. The caller of the poll task is responsible
-     * for handling the flag
+     * Pollers should shade or wrap all {@code java.lang.InterruptedException}s and raise {@code
+     * Thread.interrupted()} flag. This follows GRPC stubs approach, see {@code
+     * io.grpc.stub.ClientCalls#blockingUnaryCall}. Because pollers use GRPC stubs anyway, we chose
+     * this implementation for consistency. The caller of the poll task is responsible for handling
+     * the flag.
      *
      * @return result of the task
      */
@@ -69,20 +68,7 @@ public final class Poller<T> implements SuspendableWorker {
   private Throttler pollRateThrottler;
 
   private final Thread.UncaughtExceptionHandler uncaughtExceptionHandler =
-      (t, e) -> {
-        if (e instanceof StatusRuntimeException) {
-          StatusRuntimeException te = (StatusRuntimeException) e;
-          if (te.getStatus().getCode() == Status.Code.DEADLINE_EXCEEDED) {
-            log.warn("Failure in thread " + t.getName(), e);
-            return;
-          }
-          if (te.getCause() instanceof InterruptedException) {
-            log.debug("Failure in thread " + t.getName(), e);
-            return;
-          }
-        }
-        log.error("Failure in thread " + t.getName(), e);
-      };
+      new PollerUncaughtExceptionHandler();
 
   public Poller(
       String identity,
@@ -116,9 +102,9 @@ public final class Poller<T> implements SuspendableWorker {
               pollerOptions.getMaximumPollRateIntervalMilliseconds());
     }
 
-    // It is important to pass blocking queue of at least options.getPollThreadCount() capacity.
-    // As task enqueues next task the buffering is needed to queue task until the previous one
-    // releases a thread.
+    // It is important to pass blocking queue of at least options.getPollThreadCount() capacity. As
+    // task enqueues next task the buffering is needed to queue task until the previous one releases
+    // a thread.
     pollExecutor =
         new ThreadPoolExecutor(
             pollerOptions.getPollThreadCount(),
@@ -162,21 +148,24 @@ public final class Poller<T> implements SuspendableWorker {
     if (!isStarted()) {
       return;
     }
-    // shutdownNow and then await to stop long polling and ensure that no new tasks
-    // are dispatched to the taskExecutor.
-    shutdownAndAwaitTermination(pollExecutor);
+    // shutdownNow and then await to stop long polling and ensure that no new tasks are dispatched
+    // to the taskExecutor.
+    pollExecutor.shutdownNow();
+    try {
+      pollExecutor.awaitTermination(1, TimeUnit.SECONDS);
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+    }
     taskExecutor.shutdown();
   }
 
   @Override
   public void shutdownNow() {
-    if (log.isInfoEnabled()) {
-      log.info("shutdownNow poller=" + this.pollerOptions.getPollThreadNamePrefix());
-    }
+    log.info("shutdownNow poller={}", this.pollerOptions.getPollThreadNamePrefix());
     if (!isStarted()) {
       return;
     }
-    shutdownAndAwaitTermination(pollExecutor);
+    pollExecutor.shutdownNow();
     taskExecutor.shutdownNow();
   }
 
@@ -245,15 +234,13 @@ public final class Poller<T> implements SuspendableWorker {
 
         task.run();
         pollBackoffThrottler.success();
-      } catch (InterruptedException e) {
-        // we restore the flag here, so it can be checked and processed (with exit) in finally
-        Thread.currentThread().interrupt();
       } catch (Throwable e) {
-        pollBackoffThrottler.failure();
-        // if we are terminating and getting rejected execution - it's normal
-        if (!pollExecutor.isTerminating() || !(e instanceof RejectedExecutionException)) {
-          uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e);
+        if (e instanceof InterruptedException) {
+          // we restore the flag here, so it can be checked and processed (with exit) in finally.
+          Thread.currentThread().interrupt();
         }
+        pollBackoffThrottler.failure();
+        uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), e);
       } finally {
         if (!shouldTerminate()) {
           // Resubmit itself back to pollExecutor
@@ -272,11 +259,7 @@ public final class Poller<T> implements SuspendableWorker {
      * @return true if pollExecutor is terminating, or the current thread is interrupted.
      */
     private boolean shouldTerminate() {
-      boolean threadIsInterrupted = Thread.interrupted();
-      if (threadIsInterrupted) {
-        Thread.currentThread().interrupt();
-      }
-      return pollExecutor.isTerminating() || threadIsInterrupted;
+      return pollExecutor.isShutdown() || Thread.currentThread().isInterrupted();
     }
   }
 
@@ -292,28 +275,50 @@ public final class Poller<T> implements SuspendableWorker {
     }
   }
 
-  /**
-   * Graceful 2-stage executor shutdown as recommended in
-   * https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html
-   *
-   * @param pool - Executor service (such as Thread Pool) to shut down.
-   */
-  private static void shutdownAndAwaitTermination(ExecutorService pool) {
-    pool.shutdown(); // Disable new tasks from being submitted
-    try {
-      // Wait a while for existing tasks to terminate
-      if (!pool.awaitTermination(500, TimeUnit.MILLISECONDS)) {
-        pool.shutdownNow(); // Cancel currently executing tasks
-        // Wait a while for tasks to respond to being cancelled
-        if (!pool.awaitTermination(1000, TimeUnit.MILLISECONDS)) {
-          log.info("Thread Pool did not terminate gracefully.");
+  private final class PollerUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
+
+    @Override
+    public void uncaughtException(Thread t, Throwable e) {
+      if (!pollExecutor.isShutdown() || !shouldIgnoreDuringShutdown(e)) {
+        logPollErrors(t, e);
+      } else {
+        logPollExceptionsSuppressedDuringShutdown(t, e);
+      }
+    }
+
+    private void logPollErrors(Thread t, Throwable e) {
+      if (e instanceof StatusRuntimeException) {
+        StatusRuntimeException te = (StatusRuntimeException) e;
+        if (te.getStatus().getCode() == Status.Code.DEADLINE_EXCEEDED) {
+          log.warn("Failure in thread {}", t.getName(), e);
+          return;
         }
       }
-    } catch (InterruptedException ie) {
-      // (Re-)Cancel if current thread also interrupted
-      pool.shutdownNow();
-      // Preserve interrupt status
-      Thread.currentThread().interrupt();
+      log.error("Failure in thread {}", t.getName(), e);
+    }
+
+    /**
+     * Some exceptions are considered normal during shutdown {@link #shouldIgnoreDuringShutdown} and
+     * we log them in the most quite manner.
+     *
+     * @param t thread where the exception happened
+     * @param e the exception itself
+     */
+    private void logPollExceptionsSuppressedDuringShutdown(Thread t, Throwable e) {
+      log.trace(
+          "Failure in thread {} is suppressed, considered normal during shutdown", t.getName(), e);
+    }
+
+    private boolean shouldIgnoreDuringShutdown(Throwable ex) {
+      return
+      // if we are terminating and getting rejected execution - it's normal
+      ex instanceof RejectedExecutionException
+          // if the worker thread gets InterruptedException - it's normal during shutdown
+          || ex instanceof InterruptedException
+          // if we get wrapped InterruptedException like what PollTask or GRPC clients do with
+          // setting Thread.interrupted() on - it's normal during shutdown too. See PollTask
+          // javadoc.
+          || ex.getCause() instanceof InterruptedException;
     }
   }
 }
