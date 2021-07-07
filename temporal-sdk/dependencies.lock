@@ -146,27 +146,27 @@
             "locked": "9.1.5"
         },
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.12.2"
+            "locked": "2.12.3"
         },
         "com.google.api.grpc:proto-google-common-protos": {
             "locked": "1.17.0",
@@ -476,7 +476,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.58"
+            "locked": "2.3.59"
         }
     },
     "runtimeClasspath": {
@@ -484,27 +484,27 @@
             "locked": "9.1.5"
         },
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.12.2"
+            "locked": "2.12.3"
         },
         "com.google.android:annotations": {
             "locked": "4.1.1.4",
@@ -860,27 +860,27 @@
             "locked": "9.1.5"
         },
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.12.2"
+            "locked": "2.12.3"
         },
         "com.google.api.grpc:proto-google-common-protos": {
             "locked": "1.17.0",
@@ -1115,28 +1115,28 @@
             ]
         },
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310",
                 "netflix.io.temporal:temporal-sdk"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "netflix.io.temporal:temporal-sdk"
             ]

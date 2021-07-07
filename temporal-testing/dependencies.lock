@@ -463,7 +463,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.58"
+            "locked": "2.3.59"
         }
     },
     "runtimeClasspath": {
@@ -474,28 +474,28 @@
             ]
         },
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310",
                 "netflix.io.temporal:temporal-sdk"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "netflix.io.temporal:temporal-sdk"
             ]
@@ -1060,28 +1060,28 @@
             ]
         },
         "com.fasterxml.jackson.core:jackson-annotations": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-core": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.core:jackson-databind",
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
             ]
         },
         "com.fasterxml.jackson.core:jackson-databind": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "com.fasterxml.jackson.datatype:jackson-datatype-jsr310",
                 "netflix.io.temporal:temporal-sdk"
             ]
         },
         "com.fasterxml.jackson.datatype:jackson-datatype-jsr310": {
-            "locked": "2.12.2",
+            "locked": "2.12.3",
             "transitive": [
                 "netflix.io.temporal:temporal-sdk"
             ]
