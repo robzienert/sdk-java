@@ -562,7 +562,7 @@
     },
     "nebulaRecommenderBom": {
         "com.netflix.spring.bom:spring-boot-netflix-internalplatform-recommendations": {
-            "locked": "2.3.58"
+            "locked": "2.3.59"
         }
     },
     "protobufToolsLocator_grpc_java": {
