@@ -82,6 +82,11 @@ public class MetricsType {
   public static final String WORKER_START_COUNTER = TEMPORAL_METRICS_PREFIX + "worker_start";
   public static final String POLLER_START_COUNTER = TEMPORAL_METRICS_PREFIX + "poller_start";
 
+  public static final String POLLER_EXECUTOR_POOL_CORE_GAUGE = TEMPORAL_METRICS_PREFIX + "executor_pool_core";
+  public static final String POLLER_EXECUTOR_POOL_ACTIVE_GAUGE = TEMPORAL_METRICS_PREFIX + "executor_pool_active";
+  public static final String POLLER_EXECUTOR_POOL_QUEUED_GAUGE = TEMPORAL_METRICS_PREFIX + "executor_pool_queued";
+  public static final String POLLER_EXECUTOR_POOL_MAX_GAUGE = TEMPORAL_METRICS_PREFIX + "executor_pool_max";
+
   public static final String STICKY_CACHE_HIT = TEMPORAL_METRICS_PREFIX + "sticky_cache_hit";
   public static final String STICKY_CACHE_MISS = TEMPORAL_METRICS_PREFIX + "sticky_cache_miss";
   public static final String STICKY_CACHE_TOTAL_FORCED_EVICTION =

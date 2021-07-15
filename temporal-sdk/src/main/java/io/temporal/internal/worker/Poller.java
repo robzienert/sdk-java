@@ -20,18 +20,15 @@
 package io.temporal.internal.worker;
 
 import com.uber.m3.tally.Scope;
+import com.uber.m3.util.ImmutableMap;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.temporal.internal.common.BackoffThrottler;
 import io.temporal.internal.common.InternalUtils;
 import io.temporal.internal.metrics.MetricsType;
+
 import java.util.Objects;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,6 +58,7 @@ public final class Poller<T> implements SuspendableWorker {
   private final PollerOptions pollerOptions;
   private static final Logger log = LoggerFactory.getLogger(Poller.class);
   private ThreadPoolExecutor pollExecutor;
+  private ScheduledExecutorService pollExecutorMonitor;
   private final Scope metricsScope;
 
   private final AtomicReference<CountDownLatch> suspendLatch = new AtomicReference<>();
@@ -126,6 +124,16 @@ public final class Poller<T> implements SuspendableWorker {
         new ExecutorThreadFactory(
             pollerOptions.getPollThreadNamePrefix(), pollerOptions.getUncaughtExceptionHandler()));
 
+    pollExecutorMonitor = Executors.newSingleThreadScheduledExecutor();
+    pollExecutorMonitor.scheduleAtFixedRate(
+      () -> {
+        Scope pollerScope = metricsScope.tagged(ImmutableMap.of("poller", identity));
+        pollerScope.gauge(MetricsType.POLLER_EXECUTOR_POOL_CORE_GAUGE).update(pollExecutor.getCorePoolSize());
+        pollerScope.gauge(MetricsType.POLLER_EXECUTOR_POOL_MAX_GAUGE).update(pollExecutor.getMaximumPoolSize());
+        pollerScope.gauge(MetricsType.POLLER_EXECUTOR_POOL_ACTIVE_GAUGE).update(pollExecutor.getActiveCount());
+        pollerScope.gauge(MetricsType.POLLER_EXECUTOR_POOL_QUEUED_GAUGE).update(pollExecutor.getQueue().size());
+      }, 0, 10, TimeUnit.SECONDS);
+
     pollBackoffThrottler =
         new BackoffThrottler(
             pollerOptions.getPollBackoffInitialInterval(),
@@ -162,6 +170,7 @@ public final class Poller<T> implements SuspendableWorker {
     // are dispatched to the taskExecutor.
     shutdownAndAwaitTermination(pollExecutor);
     taskExecutor.shutdown();
+    pollExecutorMonitor.shutdown();
   }
 
   @Override
@@ -174,6 +183,7 @@ public final class Poller<T> implements SuspendableWorker {
     }
     shutdownAndAwaitTermination(pollExecutor);
     taskExecutor.shutdownNow();
+    pollExecutorMonitor.shutdownNow();
   }
 
   @Override
@@ -184,6 +194,7 @@ public final class Poller<T> implements SuspendableWorker {
     long timeoutMillis = unit.toMillis(timeout);
     timeoutMillis = InternalUtils.awaitTermination(pollExecutor, timeoutMillis);
     InternalUtils.awaitTermination(taskExecutor, timeoutMillis);
+    InternalUtils.awaitTermination(pollExecutorMonitor, timeoutMillis);
   }
 
   @Override
